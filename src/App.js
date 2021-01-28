@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Counter from "./Components/Counter";
+import SeparateComponent from "./Components/SharedCount";
+import { CounterProvider } from "./Context/context";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CounterProvider>
+        {/* Con CounterProvider se consigue que todo lo que engloba esta etiqueta comparta los atributos. De ahi que se llame estado global*/}
+        <Counter />
+        <SeparateComponent />
+      </CounterProvider>
     </div>
   );
 }
