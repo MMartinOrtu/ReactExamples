@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+/* need install react-router-dom with npm install -S react-router-dom */
 
 function App() {
+  
+  //React.lazy it helps us to import the components
+
+  const NewTodo = React.lazy(() => import('./components/NewTodo'))
+
+  const TodoList = React.lazy(() => import('./components/TodoList'))
+ 
+  /* Suspense fallback 
+  It helps us to render when we want our components,
+  while rendering with fallback shows us a message
+ */
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+        <React.Suspense fallback={<p>Please wait...</p>}>
+            <Switch>
+                <Route exact path = "/" render={() =>(
+                  <TodoList 
+                    TodoList = "TodoList"
+                   
+                  />
+                )} 
+                />
+                <Route path="/new" render={() =>(
+                  <NewTodo 
+                    NewTodo = "NewTodo"
+                  />
+                )}  />
+            </Switch>
+        </React.Suspense>
+    </Router>   
+
   );
+
 }
 
 export default App;
