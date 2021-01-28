@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState}  from 'react'
 import './App.css';
 import Child from './components/Child'
 
@@ -6,26 +6,26 @@ function App() {
 
   console.log('%cApp: render start', 'color: tomato');
 
-  const [showChild, setShowChild] = React.useState(() => {
+  const [showChild, setShowChild] = useState(() => {
     console.log('%cApp: useState callback', 'color: tomato');
     return false;
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('%cApp: useEffect no deps', 'color: LightCoral')
     return () => {
       console.log('%cApp: useEffect no deps cleanup', 'color: LightCoral')
     }
   })
   
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('%cApp: useEffect empty deps', 'color: MediumTurquoise')
     return () => {
       console.log('%cApp: useEffect empty cleanup', 'color: MediumTurquoise');
     }
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('%cApp: useEffect with dep', 'color: HotPink')
     return () => {
       console.log('%cApp: useEffect with dep cleanup', 'color: HotPink')
@@ -48,6 +48,8 @@ function App() {
       </div>
     </>
   ) 
+  
+  console.log('%cApp: render end', 'color:MediumSpringGreen');
   return element;
 }
 

@@ -55,7 +55,9 @@ export default function Child(){
         </button>
     )
     
-    console.log('%cChild: render end', 'color: MediumSpringGreen')
+    console.log(
+        '%c         Child: render end', 
+        'color: MediumSpringGreen')
     return element
 }
 
