@@ -3,7 +3,6 @@ import './App.css';
 import Child from './components/Child'
 
 function App() {
-
   console.log('%cApp: render start', 'color: tomato');
 
   const [showChild, setShowChild] = useState(() => {
